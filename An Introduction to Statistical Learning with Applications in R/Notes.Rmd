@@ -1,0 +1,65 @@
+---
+title: Notas - Livro "An Introduction to Statistical Learning with Applications in R"
+author: "Cristiane Gea"
+date: "08/07/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Capítulo 2: Statistical Learning
+
+### 2.1. What Is Statistical Learning?
+
+**Hipótese**: há alguma relação entre $Y$ e $X=(X_1, X_2,...,X_p)$, que pode ser escrita, de modo geral, como:
+
+$$Y=f(X)+\epsilon$$                
+
+onde: 
+~ * $Y$ é a variável resposta (variável dependente)
+~ * $X=(X_1+X_2+...+X_p)$ são as variáveis preditoras (variáveis independentes)
+~ * $f$ é uma função fixa e desconhecida de $X_1+X_2+...+X_p$ e representa a informação sistemática que $X$ tem de $Y$
+~ * $\epsilon$ é o termo de erro aleatório, que é independente de $X$ e tem média igual a zero
+
+Como $f$ é geralmente desconhecida, é preciso estimá-la com base nos pontos observados.
+
+Há 2 razões para estimar $f$: previsão e inferência
+
+**a. Previsão**
+
+Em muitas situações, o conjunto de variáveis independentes $X$ estão prontamente disponíveis, porém o output $Y$ não pode ser facilmente obtido. Visto que o termo de erro aleatório tem média zero, é possível prever $Y$ usando:
+$$
+\widehat{Y}=\widehat{f}(X)
+$$
+onde:
+-
+$\widehat{f}$ é a estimativa para $f$;
+-
+$\widehat{Y}$ é a previsão resultante para Y.
+
+A acurácia de $\widehat{Y}$ como previsão de $Y$ depende do erro redutível e do erro não redutível. De modo gera, $\widehat{f}$ não será uma estimativa perfeita de $f$ e esta falta de precisão será introduzida pelo erro redutível. Apesar da existência deste erro, é possível melhorar a acurávia de $\widehat{f}$ por meio da utilização de técnicas estatísticas mais apropriadas para estimar $f$. Contudo, mesmo sendo possível realizar uma estimativa perfeita para $f$, a predição ainda apresentará algum tipo de erro (erro não redutível), visto que $Y$ também é função de $\epsilon$. POrtanto, a variabilidade associada a $\epsilon$ também afeta a acurácia das previsões.
+
+O termo de erro $\epsilon$ pode conter variáveis não mensuradas, mas que são úteis para prever $Y$. Além disso, $\epsilon$ também pode conter variação não mensurada.
+
+Considere uma determinada estimativa $\widehat{f}$ e um conjunto de preditores $X$, que gera a previsão $\widehat{Y}=\widehat{f}(X)$. Assume, para um momento, que $\widehat{f}$ e $X$ são fixos. Assim,
+
+$$
+E(Y-\widehat{Y})=E[f(X)+\epsilon-\widehat{f}(X)]^2\\
+E(Y-\widehat{Y})=[f(X)-\widehat{f}(X)]^2+Var(\epsilon)
+$$
+
+onde:
+-
+$[f(X)-\widehat{f}(X)]^2$ é o erro redutível;
+-
+$Var(\epsilon)$ é o erro não redutível (é a variância do termo de erro aleatório);
+-
+$E(Y-\widehat{Y})$ é a média. ou valor esperado, da diferença quadrática entre o valor previsto e o valor atual de $Y$.
+
+**Obs.:** o erro irredutível sempre fornecerá um limite superior sobre a acurácia da predição de $Y$.
+
+**b. Inferência**
+
+Geralmente, o interesse da análise é compreender a relação entre $X$ e $Y$ ou, mais especificamente, compreender como $Y$ muda como função de $X_1,X_2,...,X_p$.
